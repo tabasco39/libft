@@ -1,47 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 23:48:53 by antsa             #+#    #+#             */
-/*   Updated: 2024/02/24 08:22:24 by aranaivo         ###   ########.fr       */
+/*   Created: 2024/02/22 07:49:34 by aranaivo          #+#    #+#             */
+/*   Updated: 2024/02/22 08:22:40 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+int	ft_strncmp(char *s1, const char *s2, size_t n)
 {
-	size_t	len;
 	size_t	i;
-	char	*result;
+	int		s1_result;
+	int		s2_result;
 
 	i = 0;
-	len = ft_strlen(str);
-	result = malloc((len + 1) * sizeof(char));
-	if (!result)
-		return (NULL);
-	else
+	s1_result = 0;
+	s2_result = 0;
+	while (i < n)
 	{
-		while (str[i])
+		if (*s1 != *s2)
 		{
-			result[i] = str[i];
-			i++;
+			s1_result += s1[i];
+			s2_result += s2[i];
+			return (s1_result - s2_result);
 		}
+		i++;
 	}
-	result[i] = '\0';
-	return (result);
+	return (0);
 }
-
 /*
 #include <string.h>
 #include <stdio.h>
 int main()
 {
-	char str[] = "Hello word!";
-	printf("resultat: %s \n", ft_strdup(str));
-	printf("resultat: %s \n", strdup(str));
+	char *s1 = "hello";
+	char *s2 = "lello";
+	printf("original ==> %d \n", strncmp(s1 , s2, 3));
+
+	printf("=============================== \n");
+
+	char *s3 = "hello";
+	char *s4 = "lello";
+	printf("my function ==> %d \n", ft_strncmp(s3 , s4, 3));
 }
 */

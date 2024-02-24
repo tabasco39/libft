@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 23:04:12 by antsa             #+#    #+#             */
-/*   Updated: 2024/02/24 08:19:54 by aranaivo         ###   ########.fr       */
+/*   Created: 2024/02/22 08:23:35 by aranaivo          #+#    #+#             */
+/*   Updated: 2024/02/24 07:12:26 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *pointer, int value, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*src;
 	size_t			i;
+	unsigned char	*src;
 
-	src = (unsigned char *)pointer;
 	i = 0;
+	src = (unsigned char *)s;
 	while (i < n)
 	{
-		src[i] = (unsigned char)value;
+		if (src[i] == c)
+			return (&src[i]);
 		i++;
 	}
-	return ((unsigned char *)src);
+	return (NULL);
 }
 /*
 #include <stdio.h>
 #include <string.h>
-int main()
+int	main()
 {
-	char s[] = "Bonjour tout le monde!";
-	char *r = ft_memset(s + 3, '#', 5 );
-	char *o = memset(s + 3, '#', 5 );
-	printf("resultat: %s \n", s);
-	printf("original: %s \n", s);
-
+	char data[] = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+	char *p = memchr(data, 30, 9);
+	printf("original: %p \n", p);
+	printf("================= \n");
+	char *v = ft_memchr(data, 30, 9);
+	printf("result: %p \n", v);
 }
 */

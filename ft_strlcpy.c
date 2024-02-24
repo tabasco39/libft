@@ -6,12 +6,10 @@
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 08:01:10 by aranaivo          #+#    #+#             */
-/*   Updated: 2024/02/21 10:36:40 by aranaivo         ###   ########.fr       */
+/*   Updated: 2024/02/24 08:23:30 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-//#include <string.h>
 #include "libft.h"
 
 unsigned int	ft_strlcpy(char *dest, const char *src, size_t size)
