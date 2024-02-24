@@ -6,7 +6,7 @@
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 07:53:51 by aranaivo          #+#    #+#             */
-/*   Updated: 2024/02/21 17:09:14 by aranaivo         ###   ########.fr       */
+/*   Updated: 2024/02/24 09:47:34 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	char		*d;
 	const char	*s;
-	char		buffer[n + 1];
-	size_t			i;
+	char		*buffer;
+	size_t		i;
 
 	i = 0;
 	d = dest;
 	s = src;
+	buffer = (char *)src;
 	while (i < n)
 	{
 		buffer[i] = s[i];
@@ -39,8 +40,9 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 #include <string.h>
 #include <stdio.h>
 int main() {
-    char dest[] = "Bonjour";
-	char src[] = "Hello";
+	char str[] = "Bonjour tout le monde";
+    char *dest = str +3;
+	char *src = str;
    // printf("oiginal ==> %ls \n", data);
     char *result = ft_memmove(dest, src, 2);
 	

@@ -6,7 +6,7 @@
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:17:02 by aranaivo          #+#    #+#             */
-/*   Updated: 2024/02/24 08:25:02 by aranaivo         ###   ########.fr       */
+/*   Updated: 2024/02/24 09:54:44 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ size_t	ft_strlen(const char *s)
 	}
 	return (i);
 }
+
 /*
 int	 main ()
 {
 	char s[] = "hello";
 	printf("longueur: %ld", ft_strlen(s));
 }*/
-

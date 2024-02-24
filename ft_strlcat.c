@@ -6,7 +6,7 @@
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 10:28:29 by aranaivo          #+#    #+#             */
-/*   Updated: 2024/02/21 15:26:38 by aranaivo         ###   ########.fr       */
+/*   Updated: 2024/02/24 09:54:30 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 		src++;
 	}
 	dest[i] = '\0';
-	if(size < dest_length)
+	if (size < dest_length)
 		return (size + src_length);
 	return ((dest_length + src_length) + 1);
 }

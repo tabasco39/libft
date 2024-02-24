@@ -6,7 +6,7 @@
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 07:49:34 by aranaivo          #+#    #+#             */
-/*   Updated: 2024/02/22 08:22:40 by aranaivo         ###   ########.fr       */
+/*   Updated: 2024/02/24 14:24:32 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_strncmp(char *s1, const char *s2, size_t n)
 	s2_result = 0;
 	while (i < n)
 	{
-		if (*s1 != *s2)
+		if (s1[i] != s2[i])
 		{
 			s1_result += s1[i];
 			s2_result += s2[i];
@@ -38,14 +38,14 @@ int	ft_strncmp(char *s1, const char *s2, size_t n)
 #include <stdio.h>
 int main()
 {
-	char *s1 = "hello";
-	char *s2 = "lello";
-	printf("original ==> %d \n", strncmp(s1 , s2, 3));
+	char *s1 = "aba Hello! aba";
+	char *s2 = "abaaaaaa";
+	printf("original ==> %d \n", strncmp(s1 , s2, 6));
 
 	printf("=============================== \n");
 
-	char *s3 = "hello";
-	char *s4 = "lello";
-	printf("my function ==> %d \n", ft_strncmp(s3 , s4, 3));
+	char *s3 = "aba Hello! aba";
+	char *s4 = "abaaaaaa";
+	printf("my function ==> %d \n", ft_strncmp(s3 , s4, 6));
 }
 */
