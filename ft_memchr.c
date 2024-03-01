@@ -6,7 +6,7 @@
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:23:35 by aranaivo          #+#    #+#             */
-/*   Updated: 2024/02/24 07:12:26 by aranaivo         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:19:15 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	src = (unsigned char *)s;
 	while (i < n)
 	{
-		if (src[i] == c)
+		if (src[i] == (unsigned char)c)
 			return (&src[i]);
 		i++;
 	}

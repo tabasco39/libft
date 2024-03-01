@@ -6,7 +6,7 @@
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 07:49:34 by aranaivo          #+#    #+#             */
-/*   Updated: 2024/02/24 14:24:32 by aranaivo         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:15:42 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ int	ft_strncmp(char *s1, const char *s2, size_t n)
 		{
 			s1_result += s1[i];
 			s2_result += s2[i];
-			return (s1_result - s2_result);
+			return ((unsigned char)s1_result - (unsigned char)s2_result);
 		}
+		if (s1[i] == '\0' && s2[i] == '\0')
+			return (0);
 		i++;
 	}
 	return (0);
@@ -38,14 +40,15 @@ int	ft_strncmp(char *s1, const char *s2, size_t n)
 #include <stdio.h>
 int main()
 {
-	char *s1 = "aba Hello! aba";
-	char *s2 = "abaaaaaa";
-	printf("original ==> %d \n", strncmp(s1 , s2, 6));
+ 	char *s1 = "atoms\0\0\0\0";
+ 	char *s2 = "atoms\0abc";
+
+	printf("original ==> %d \n", strncmp(s1 , s2, 8));
 
 	printf("=============================== \n");
 
-	char *s3 = "aba Hello! aba";
-	char *s4 = "abaaaaaa";
-	printf("my function ==> %d \n", ft_strncmp(s3 , s4, 6));
+	char *s3 = "atoms\0\0\0\0";
+	char *s4 = "atoms\0abc";
+	printf("my function ==> %d \n", ft_strncmp(s3 , s4, 8));
 }
 */

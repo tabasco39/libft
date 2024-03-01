@@ -6,7 +6,7 @@
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:14:42 by aranaivo          #+#    #+#             */
-/*   Updated: 2024/02/22 07:48:12 by aranaivo         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:39:42 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	*ft_strrchr(const char *string, int c)
 
 	dest_len = ft_strlen(string);
 	i = 1;
-	if (dest_len == 0)
-		return (NULL);
+	if (c == '\0')
+		return ((char *)string + ft_strlen(string));
 	while (i <= dest_len)
 	{
 		if (string[dest_len - i] == c)
@@ -36,10 +36,13 @@ char	*ft_strrchr(const char *string, int c)
 #include <string.h>
 #include <stdio.h>
 int main (){
-	char str[] = "Bonjour";
-	printf("original ==> %p \n", strrchr(str, 117));
+	char *src = "the cake is a lie !\0I'm hidden lol\r\n";
+ 	char *d1 = strchr(src, ' ');
+ 	char *d2 = ft_strchr(src, ' ');
+
+	printf("original ==> %s \n", d1);
 	printf("==================== \n");
-	printf("my function ==> %p \n", ft_strrchr(str, 117));
+	printf("my function ==> %s \n", d2);
 	
 }
 */

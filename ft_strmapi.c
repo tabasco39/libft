@@ -1,47 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 23:48:53 by antsa             #+#    #+#             */
-/*   Updated: 2024/02/28 08:05:03 by aranaivo         ###   ########.fr       */
+/*   Created: 2024/02/27 07:38:24 by aranaivo          #+#    #+#             */
+/*   Updated: 2024/02/27 10:13:38 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	len;
-	size_t	i;
-	char	*result;
+	unsigned int	i;
+	char			*result;
 
-	i = 0;
-	len = ft_strlen(str);
-	result = malloc((len + 1) * sizeof(char));
+	if (!s)
+		return (NULL);
+	result = malloc((ft_strlen(s) + 1) * sizeof(char));
 	if (!result)
 		return (NULL);
-	else
+	i = 0;
+	while (s[i])
 	{
-		while (str[i])
-		{
-			result[i] = str[i];
-			i++;
-		}
+		result[i] = f(i, s[i]);
+		i++;
 	}
 	result[i] = '\0';
 	return (result);
 }
 
 /*
-#include <string.h>
 #include <stdio.h>
-int main()
+#include <ctype.h>
+char uppercase(unsigned int i, char c)
 {
-	char str[] = "";
-	printf("resultat: %s \n", ft_strdup(str));
-	printf("resultat: %s \n", strdup(str));
+    if (i % 2 == 0)
+        return toupper(c);
+    else
+        return tolower(c);
+}
+
+int	main()
+{
+	char* s = ft_strmapi(NULL, uppercase);
+	printf("result : %s \n", s);
 }
 */

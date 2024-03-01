@@ -1,28 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 12:42:06 by aranaivo          #+#    #+#             */
-/*   Updated: 2024/02/27 13:57:38 by aranaivo         ###   ########.fr       */
+/*   Created: 2024/02/27 08:22:09 by aranaivo          #+#    #+#             */
+/*   Updated: 2024/02/29 16:50:47 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
-
-int	ft_isascii(int c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	return (c >= 0 && c <= 127);
+	unsigned int	i;
+
+	if (s && f)
+	{
+		i = 0;
+		while (*s)
+		{
+			f(i++, s++);
+		}
+	}
 }
 /*
+#include <ctype.h>
+
+void	uppercase(unsigned int index, char *ch)
+{
+	printf ("ibde = %d \n", index);
+	printf ("%s \n", ch);
+	printf ("%c \n", ch[index]);
+	printf ("%c \n", toupper(ch[index]));
+	*ch = toupper(ch[index]);
+	printf("test");
+}
+
 int	main(void)
 {
-	char	c;
+	char	*s;
 
-	c = '€';
-	printf("%d \n", ft_isascii(c));
+	s = "bonjour";
+	ft_striteri(s, uppercase);
+	printf("result : %s \n", s);
 }
 */

@@ -5,52 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 07:53:51 by aranaivo          #+#    #+#             */
-/*   Updated: 2024/02/24 09:47:34 by aranaivo         ###   ########.fr       */
+/*   Created: 2024/02/29 09:12:18 by aranaivo          #+#    #+#             */
+/*   Updated: 2024/02/29 09:20:06 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char		*d;
-	const char	*s;
-	char		*buffer;
-	size_t		i;
+	unsigned char		*d;
+	const unsigned char	*s = src;
 
-	i = 0;
-	d = dest;
-	s = src;
-	buffer = (char *)src;
-	while (i < n)
+	d = dst;
+	if (d == s)
 	{
-		buffer[i] = s[i];
-		i++;
+		return (d);
 	}
-	i = 0;
-	while (i < n)
+	else if (s < d && d < s + len)
 	{
-		d[i] = buffer[i];
-		i++;
+		s += len;
+		d += len;
+		while (len--)
+		{
+			*--d = *--s;
+		}
 	}
-	return (dest);
+	else
+	{
+		while (len--)
+		{
+			*d++ = *s++;
+		}
+	}
+	return (dst);
 }
 /*
-#include <string.h>
 #include <stdio.h>
-int main() {
-	char str[] = "Bonjour tout le monde";
-    char *dest = str +3;
-	char *src = str;
-   // printf("oiginal ==> %ls \n", data);
-    char *result = ft_memmove(dest, src, 2);
-	
-	char *o = memmove(dest, src, 3);
-	printf("%s ,", o);
-	printf("\n");
-   	printf("%s ,", result);
-	
-    return 0;
+int	main()
+{
+	char *s1 = "bonjour";
+	char *s2 = "hello";
+	printf("%s \n", ft_memmove(s1, s2, 3));
 }
 */

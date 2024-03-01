@@ -6,36 +6,30 @@
 #    By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/04/07 10:38:58 by ggane             #+#    #+#              #
-#    Updated: 2024/02/24 16:28:34 by aranaivo         ###   ########.fr        #
+#    Updated: 2024/03/01 07:44:08 by aranaivo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libft.a
-CC=gcc
-CFLAGS=-Wall -Wextra -Werror
-RM=rm -f
-LDFLAGS=-L.
-LDLIBS=-lft
-SRC = ./ft_atoi.c 
+FLAGS=-Wall -Wextra -Werror
+SRCS = $(wildcard *.c)
+OBJS = $(SRCS:.c=.o)
 
-OBJ = $(SRC:.c=.o)
-INC = ./inc/
-
-$(NAME): $(OBJ)
-		ar rc $(NAME) $(OBJ)
-		ranlib $(NAME)
-
-%.o: %.c
-		$(CC) -I. -o $@ -c $? $(CFLAGS)
+HEADER = libft.h
 
 all: $(NAME)
 
+$(NAME): $(OBJS)
+	ar -rc $(NAME) $(OBJS)
+
+%.o: %.c
+	cc $(FLAGS) -c $< -o $@
+
 clean:
-		$(RM) $(OBJ)
+	rm -rf $(OBJS)
 
 fclean: clean
-		$(RM) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
-
 .PHONY: clean clean
