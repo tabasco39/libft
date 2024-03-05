@@ -6,7 +6,7 @@
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 09:55:46 by aranaivo          #+#    #+#             */
-/*   Updated: 2024/02/24 15:24:12 by aranaivo         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:51:56 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		total_len;
 
 	total_len = ft_strlen(s1) + ft_strlen(s2);
-	result = malloc((total_len + 1) * sizeof(char));
+	result = (char *)malloc((total_len + 1) * sizeof(char));
 	i = 0;
 	j = ft_strlen(s1);
 	if (!result)
@@ -47,7 +47,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 			i++;
 		}
 		result[j] = '\0';
-		return (result);
+		return ((char *)result);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 08:32:07 by aranaivo          #+#    #+#             */
-/*   Updated: 2024/02/29 11:42:28 by aranaivo         ###   ########.fr       */
+/*   Updated: 2024/03/02 08:43:46 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,19 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	size_t	j;
 	char	*result;
-	int		total_len;
 
 	i = start;
 	j = 0;
+	if (len > ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
 	if (start >= ft_strlen(s))
 		len = 0;
-	else
-		total_len = len + 1;
-	result = malloc((total_len) * sizeof(char));
+	result = (char *)malloc((len + 1) * sizeof(char));
 	if (!result)
 		return (NULL);
 	else
 	{
-		while (j < len)
+		while (j < len && start < ft_strlen((const char *)s))
 		{
 			result[j] = s[i];
 			j++;
@@ -39,14 +38,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		}
 	}
 	result[j] = '\0';
-	return (result);
+	return ((char *)result);
 }
 
 /*
 int	main(void)
 {
-	char	s[] = "hola";
+	char	s[] = "i just want this part #############";
 
-	printf("resultat: %s \n", ft_substr(s, 0, 100000000000000000000000));
+	printf("resultat: %s \n", ft_substr(s, -1, 5));
 }
 */

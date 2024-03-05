@@ -6,12 +6,26 @@
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 10:23:09 by aranaivo          #+#    #+#             */
-/*   Updated: 2024/02/29 17:11:58 by aranaivo         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:21:07 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+
+int	check_char(char c, char *set)
+{
+	int	i;
+
+	i = 0;
+	while (set[i])
+	{
+		if (c == set[i])
+			return (c);
+		i++;
+	}
+	return (0);
+}
 
 int	check_set_start(char *s1, char *set)
 {
@@ -49,33 +63,36 @@ int	check_set_end(char *s1, char *set)
 	return (position);
 }
 
-int	count_words()
-{
-	
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*result;
-	int		total_len;
 	int		start;
 	int		end;
+	int		i;
 
-	total_len = ft_strlen(s1);
-	result = malloc(total_len * sizeof(char));
+	i = 0;
+	start = check_set_start((char *)s1, (char *)set);
+	end = ft_strlen(s1) - check_set_end((char *)s1, (char *)set);
+	if (start == (int)ft_strlen(s1))
+		result = malloc(sizeof(char));
+	else
+		result = malloc(((end - start) + 1) * sizeof(char));
 	if (!result)
 		return (NULL);
-	start = check_set_start((char *)s1, (char *)set);
-	result = ft_substr(s1, start, total_len - start);
-	end = check_set_end((char *)s1, (char *)set);
-	result = ft_substr(result, 0, ft_strlen(result) - end);
+	while (start < end)
+	{
+		result[i] = s1[start];
+		start++;
+		i++;
+	}
+	result[i] = '\0';
 	return (result);
 }
 /*
 int	main(void)
 {
-	char const	s[] = "";
-	char		r[] = "";
+	char const	s[] = "1  \t \t \n   \n\n\n\t1";
+	char		r[] = " \n\t";
 	char		*result;
 
 	result = ft_strtrim(s, r);

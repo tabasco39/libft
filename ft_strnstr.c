@@ -6,7 +6,7 @@
 /*   By: aranaivo <aranaivo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:31:55 by antsa             #+#    #+#             */
-/*   Updated: 2024/02/28 07:41:47 by aranaivo         ###   ########.fr       */
+/*   Updated: 2024/03/05 16:19:52 by aranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ char	*ft_strnstr(const char *fullString, const char *substring, size_t n)
 	j = 0;
 	if (ft_strlen(substring) == 0)
 		return ((char *)fullString);
-	while (j < n)
+	if ((int)n < 0 && fullString[0] == '\0')
+		return (NULL);
+	while (j < n )
 	{
 		i = 0;
 		while (fullString[j + i] == substring[i] && (j + i < n))
@@ -33,19 +35,19 @@ char	*ft_strnstr(const char *fullString, const char *substring, size_t n)
 	}
 	return (NULL);
 }
-
 /*
+#include <stdio.h>
 #include <bsd/string.h>
 
 int	main(void)
 {
-	char	s1[] = "MZIRIBMZIRIBMZE123";
-	char	s2[] = "MZIRIBMZE";
+	char	s1[] = "salut";
+	char	s2[] = "lu";
 	char	*r1;
 	char	*r2;
 
-	r1 = strnstr(s1, s2, 11);
-	r2 = ft_strnstr(s1, s2, 11);
+	r1 = strnstr(s1, s2, -1);
+	r2 = ft_strnstr(s1, s2, -1);
 	printf("original: %s \n", r1);
 	printf("============================== \n");
 	printf("function: %s \n",r2);
